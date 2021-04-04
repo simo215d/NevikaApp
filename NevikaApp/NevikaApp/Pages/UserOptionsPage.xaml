@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NevikaApp.Pages.UserOptionsPage"
+             xmlns:Helpers="clr-namespace:NevikaApp.Helpers"
+             BackgroundColor="White">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Helpers:InverseBoolConverter x:Key="BoolInvert" />
+            <Style TargetType="Label" x:Key="LabelHeaderStyle">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="24"/>
+            </Style>
+            <Style TargetType="Frame" x:Key="SearchBarStyle">
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="HasShadow" Value="False"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="HeightRequest" Value="30"/>
+                <Setter Property="Margin" Value="0, 10, 0, 10"/>
+            </Style>
+            <Style TargetType="CheckBox" x:Key="CheckBoxStyle">
+                <Setter Property="Color" Value="Black"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style TargetType="Label" x:Key="LabelAllergenStyle">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="VerticalTextAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
+            <Style TargetType="ListView" x:Key="ListViewAllergenStyle">
+                <Setter Property="SeparatorVisibility" Value="None"/>
+                <Setter Property="AbsoluteLayout.LayoutFlags" Value="All"/>
+                <Setter Property="AbsoluteLayout.LayoutBounds" Value="0, 0, 1, 1"/>
+            </Style>
+            <Style TargetType="Button" x:Key="ButtonVidereStyle">
+                <Setter Property="TextColor" Value="#007AFF"/>
+                <Setter Property="BackgroundColor" Value="White"/>
+                <Setter Property="AbsoluteLayout.LayoutFlags" Value="All"/>
+                <Setter Property="AbsoluteLayout.LayoutBounds" Value="0.98, 1, 0.35, 0.1"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="75"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout  Margin="40,20,40,0">
+            <Image Source="nevikaLogo_small.png"/>
+            <Label Text="Vælg allergener:" Style="{StaticResource LabelHeaderStyle}"/>
+            <Frame Style="{StaticResource SearchBarStyle}">
+                <SearchBar Placeholder="Søg" TextChanged="OnSearchBarChange"/>
+            </Frame>
+
+            <AbsoluteLayout>
+                <ListView x:Name ="allergensListView" IsGroupingEnabled="true" GroupDisplayBinding="{Binding GroupName}" HasUnevenRows="True" Style="{StaticResource ListViewAllergenStyle}">
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid HeightRequest="40">
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="White">
+                                        <CheckBox IsChecked="{Binding Selected}" Style="{StaticResource CheckBoxStyle}"/>
+                                        <Label Text="{Binding GroupName}" VerticalTextAlignment="Center" TextColor="Black" FontSize="16"/>
+                                    </StackLayout>
+                                    <Button BackgroundColor="White" Clicked="OnCheckedChanged" Opacity="0.2"/>
+                                    <StackLayout IsVisible="{Binding HasChildren}">
+                                        <Button Text="Kollaps ▲" Clicked="HeaderClicked" CommandParameter="{Binding .}" IsVisible="{Binding Expanded}" HorizontalOptions="End" WidthRequest="150"/>
+                                        <Button Text="Udvid ▼" Clicked="HeaderClicked" CommandParameter="{Binding .}" IsVisible="{Binding Expanded, Converter={StaticResource BoolInvert}}" HorizontalOptions="End" WidthRequest="150"/>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <!--Reason for button ontop is cuz reloading the list somehow triggers the checkbox event. IDK WHY. so i do this instead-->
+                                <Grid HeightRequest="40" Margin="30,0,0,0">
+                                    <Grid x:Name="itemGrid">
+                                        <StackLayout Orientation="Horizontal">
+                                            <CheckBox IsChecked="{Binding Selected}" HorizontalOptions="Start" Style="{StaticResource CheckBoxStyle}"/>
+                                            <Label Text="{Binding DanishName}" Style="{StaticResource LabelAllergenStyle}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                    <Button BackgroundColor="White" Clicked="OnCheckedChanged" Opacity="0.2"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button Text="Videre ᐳ" Style="{StaticResource ButtonVidereStyle}" Clicked="buttonVidere_Clicked" x:Name="buttonSelectContact"/>
+            </AbsoluteLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    <!--
+    <StackLayout Margin="40,20,40,0">
+        <Image Source="nevikaLogo_small.png"/>
+        <Label Text="Vælg allergener:" Style="{StaticResource LabelHeaderStyle}"/>
+        <Frame Style="{StaticResource SearchBarStyle}">
+            <SearchBar Placeholder="Søg"/>
+        </Frame>
+
+        <AbsoluteLayout>
+            <ListView x:Name="allergensListView" Style="{StaticResource ListViewAllergenStyle}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding Selected}" CheckedChanged="OnCheckedChanged" HorizontalOptions="Start" Style="{StaticResource CheckBoxStyle}"/>
+                                <Label Text="{Binding DanishName}" Style="{StaticResource LabelAllergenStyle}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Videre ᐳ" Style="{StaticResource ButtonVidereStyle}" Clicked="buttonVidere_Clicked" x:Name="buttonSelectContact"/>
+        </AbsoluteLayout>
+    </StackLayout>
+    -->
+</ContentPage>

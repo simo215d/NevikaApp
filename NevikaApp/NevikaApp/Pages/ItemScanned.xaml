@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NevikaApp.Pages.ItemScanned"
+             BackgroundColor="White">
+    <StackLayout>
+        <Grid>
+            <Button Text="←" WidthRequest="100" HorizontalOptions="Start" TextColor="#007AFF" FontSize="30" BackgroundColor="White" Clicked="ButtonBack_Clicked"/>
+        </Grid>
+        <Grid Padding="0, 5, 10, 40" ColumnSpacing="5" Margin="0, 0, 20, 20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image x:Name="ProductIconSlot"
+               WidthRequest="100"
+               HeightRequest="100"
+               Grid.Row="0"
+               Grid.Column="0"/>
+            <Label x:Name="ProductNameSlot"
+               Text="Choko-Crisps"
+               TextColor="Black"
+               FontSize="20"
+               Grid.Row="0"
+               Grid.Column="1"
+               Grid.ColumnSpan="2"/>
+
+            <ActivityIndicator x:Name="LoadingCircle"
+                               IsRunning="true"
+                               Grid.Row="0"
+                               Grid.Column="1"/>
+        </Grid>
+        <StackLayout Margin="20, 0, 20, 20">
+            <Label x:Name="Label_Allergens_Title"
+                   Text="Allergener i scannet vare:"
+                   FontSize="16"
+                   TextColor="Black"/>
+
+            <Label x:Name="Label_Allergens"
+                   Text=""
+                   FontSize="16"
+                   TextColor="Gray"/>
+
+            <Label x:Name="ProductFoundAllergensSlot"
+                   FontSize="16"
+                   TextColor="Red"/>
+
+            <Label x:Name="Label_Ingredients"
+                   Text=""
+                   FontSize="16"
+                   TextColor="Black"/>
+
+            <Label x:Name="ProductIngredientsSlot"
+                   FontSize="16"
+                   TextColor="Black"/>
+
+            <Button x:Name="FavoritButton"
+                   Text="☆ Tilføj til favoritter"
+                   FontSize="16"
+                   TextColor="Black"
+                   HorizontalOptions="Start"
+                   BackgroundColor="White"
+                   Clicked="ButtonSettingsMenu_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

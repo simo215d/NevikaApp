@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NevikaApp.Pages.MainAppPage"
+             BackgroundColor="White">
+
+    <Grid Padding="20, 20, 20, 5" ColumnSpacing="10" RowSpacing="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        
+        <Image Source="nevikaLogo_small.png"
+               Grid.Row="0"
+               Grid.ColumnSpan="3"/>
+
+        <Button x:Name="btnSettingsMenu"
+                Grid.Row="2"
+                Grid.ColumnSpan="1"
+                Grid.Column="0"
+                BackgroundColor="White"
+                ImageSource="icon_Settings_Button"/>
+
+        <Button x:Name="btnScanBarcode"
+                Grid.Row="2"
+                Grid.ColumnSpan="1"
+                Grid.Column="1"
+                BackgroundColor="White"
+                ImageSource="scanBarcodeButton_image_30"/>
+
+        <Button x:Name="btnProfileMenu"
+                Grid.Row="2"
+                Grid.ColumnSpan="1"
+                Grid.Column="2"
+                BackgroundColor="White"
+                ImageSource="icon_Profile_Button"/>
+
+    </Grid>
+
+</ContentPage>
