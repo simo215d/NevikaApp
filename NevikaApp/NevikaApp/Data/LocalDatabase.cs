@@ -152,14 +152,14 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Mælk",
+                    DanishName = "Maelk",
                     IsCategory = false,
                     Category = "Mejeriprodukter",
                     Selected = false
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Smør",
+                    DanishName = "Smor",
                     IsCategory = false,
                     Category = "Mejeriprodukter",
                     Selected = false

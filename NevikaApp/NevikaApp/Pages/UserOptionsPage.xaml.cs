@@ -56,6 +56,27 @@ namespace NevikaApp.Pages
             }
         }
 
+        private void SyncAllergensWithDatabase()
+        {
+            foreach (GroupedAllergen list in groupedAll)
+            {
+                foreach (Allergen item in list)
+                {
+                    foreach (Allergen dbItem in LocalDatabase.AllergensList)
+                    {
+                        if (dbItem.IsCategory && dbItem.DanishName == list.GroupName)
+                        {
+                            list.Selected = dbItem.Selected;
+                        }
+                        if (dbItem.Category == list.GroupName && dbItem.DanishName==item.DanishName && !dbItem.IsCategory)
+                        {
+                            item.Selected = dbItem.Selected;
+                        }
+                    }
+                }
+            }
+        }
+
         private void HeaderClicked(object sender, EventArgs e)
         {
             //marking the clicked to change between hidden and shown
@@ -110,7 +131,7 @@ namespace NevikaApp.Pages
                     conn.Update(LocalDatabase.AllergensList[index]);
                 }
                 //since database was manipulated we need to refresh our allergens list
-                SetAllergens();
+                SyncAllergensWithDatabase();
                 updateList();
             }
             if (AllergenName != null && IsGroup)
@@ -134,7 +155,7 @@ namespace NevikaApp.Pages
                     }
                 }
                 //since database was manipulated we need to refresh our allergens list
-                SetAllergens();
+                SyncAllergensWithDatabase();
                 updateList();
             }
         }
