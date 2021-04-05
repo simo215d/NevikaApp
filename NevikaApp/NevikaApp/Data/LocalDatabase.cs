@@ -341,7 +341,7 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Jordnødder",
+                    DanishName = "Peanuts",
                     IsCategory = false,
                     Category = "Nødder",
                     Selected = false
