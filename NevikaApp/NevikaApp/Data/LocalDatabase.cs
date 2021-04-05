@@ -929,6 +929,14 @@ namespace NevikaApp.Data
                     Product_Image = "okologisksodchilisauce.jpg",
                     Product_EAN_Code = "5711988002133",
                 });
+                products.Add(new Product()
+                {
+                    Product_Name = "Snickers",
+                    Product_Brand = "Mars",
+                    Product_Ingredients_Text = "Mælkechokolade med hvid nougat (14%), blød karamel (27%) og ristede peanuts. Indeholder mindst 25% kakaotørstof.",
+                    Product_Image = "snickers.jpg",
+                    Product_EAN_Code = "5000159461122",
+                });
                 conn.InsertAll(products);
             }
         }
