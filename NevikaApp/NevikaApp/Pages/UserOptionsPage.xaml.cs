@@ -58,20 +58,28 @@ namespace NevikaApp.Pages
 
         private void SyncAllergensWithDatabase()
         {
+            //handle sub allergens
             foreach (GroupedAllergen list in groupedAll)
             {
                 foreach (Allergen item in list)
                 {
                     foreach (Allergen dbItem in LocalDatabase.AllergensList)
                     {
-                        if (dbItem.IsCategory && dbItem.DanishName == list.GroupName)
-                        {
-                            list.Selected = dbItem.Selected;
-                        }
                         if (dbItem.Category == list.GroupName && dbItem.DanishName==item.DanishName && !dbItem.IsCategory)
                         {
                             item.Selected = dbItem.Selected;
                         }
+                    }
+                }
+            }
+            //handle categories
+            foreach (GroupedAllergen list in groupedAll)
+            {
+                foreach (Allergen dbItem in LocalDatabase.AllergensList)
+                {
+                    if (dbItem.IsCategory && dbItem.DanishName == list.GroupName)
+                    {
+                        list.Selected = dbItem.Selected;
                     }
                 }
             }
