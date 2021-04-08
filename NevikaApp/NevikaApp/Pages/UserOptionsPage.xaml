@@ -67,8 +67,8 @@
                                     </StackLayout>
                                     <Button BackgroundColor="White" Clicked="OnCheckedChanged" Opacity="0.2"/>
                                     <StackLayout IsVisible="{Binding HasChildren}">
-                                        <Button Text="Kollaps ▲" Clicked="HeaderClicked" CommandParameter="{Binding .}" IsVisible="{Binding Expanded}" HorizontalOptions="End" WidthRequest="150"/>
-                                        <Button Text="Udvid ▼" Clicked="HeaderClicked" CommandParameter="{Binding .}" IsVisible="{Binding Expanded, Converter={StaticResource BoolInvert}}" HorizontalOptions="End" WidthRequest="150"/>
+                                        <Button Text="▲" Clicked="HeaderClicked" CommandParameter="{Binding .}" IsVisible="{Binding Expanded}" HorizontalOptions="End" WidthRequest="50"/>
+                                        <Button Text="▼" Clicked="HeaderClicked" CommandParameter="{Binding .}" IsVisible="{Binding Expanded, Converter={StaticResource BoolInvert}}" HorizontalOptions="End" WidthRequest="50"/>
                                     </StackLayout>
                                 </Grid>
                             </ViewCell>
