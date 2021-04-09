@@ -39,12 +39,14 @@ namespace NevikaApp.Pages
                     GroupedAllergen group = new GroupedAllergen();
                     group.Expanded = true;
                     group.Selected = allergen.Selected;
-                    group.GroupName = allergen.DanishName;
+                    group.GroupName = allergen.DanishName/*.First().ToString().ToUpper()+ allergen.DanishName.Substring(1)*/;
                     foreach (Allergen allergen2 in allergens)
                     {
                         if (allergen2.Category == group.GroupName && !allergen2.IsCategory)
                         {
-                            group.Add(allergen2);
+                            Allergen allergernToAdd = allergen2;
+                            allergernToAdd.DanishName = allergen2.DanishName/*.First().ToString().ToUpper() + allergen2.DanishName.Substring(1)*/;
+                            group.Add(allergernToAdd);
                         }
                     }
                     if (group.Count > 0)
@@ -116,12 +118,14 @@ namespace NevikaApp.Pages
         private void OnCheckedChanged(object sender, EventArgs e)
         {
             bool Selected = false;
-            String AllergenName = null;
+            string AllergenName = "";
             bool IsGroup = false;
+            Allergen allergen = null;
             if (((Button)sender).BindingContext is Allergen)
             {
-                Selected = ((Allergen)((Button)sender).BindingContext).Selected;
-                AllergenName = ((Allergen)((Button)sender).BindingContext).DanishName;
+                allergen = ((Allergen)((Button)sender).BindingContext);
+                Selected = allergen.Selected;
+                AllergenName = allergen.DanishName;
             }
             if (((Button)sender).BindingContext is GroupedAllergen)
             {
@@ -129,11 +133,11 @@ namespace NevikaApp.Pages
                 AllergenName = ((GroupedAllergen)((Button)sender).BindingContext).GroupName;
                 IsGroup = true;
             }
-            if(AllergenName != null && !IsGroup)
+            if(AllergenName != "" && !IsGroup)
             {
                 int index = LocalDatabase.AllergensList.FindIndex(al => al.DanishName == AllergenName);
                 LocalDatabase.AllergensList[index].Selected = !Selected;
-
+                //allergen.DanishName = allergen.DanishName + " "+AllergenName+": " + index;
                 using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(LocalDatabase.LOCAL_DB_PATH))
                 {
                     conn.Update(LocalDatabase.AllergensList[index]);
@@ -142,7 +146,7 @@ namespace NevikaApp.Pages
                 SyncAllergensWithDatabase();
                 updateList();
             }
-            if (AllergenName != null && IsGroup)
+            if (AllergenName != "" && IsGroup)
             {
                 int index = LocalDatabase.AllergensList.FindIndex(al => al.DanishName == AllergenName);
                 LocalDatabase.AllergensList[index].Selected = !Selected;

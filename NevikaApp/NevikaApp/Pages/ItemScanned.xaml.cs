@@ -160,6 +160,8 @@ namespace NevikaApp.Pages
             }
             else
             {
+                Label_Allergens.IsVisible = true;
+                ProductFoundAllergensSlot.IsVisible = false;
                 Label_Allergens.Text = "Ingen allergener fundet";
             }
 

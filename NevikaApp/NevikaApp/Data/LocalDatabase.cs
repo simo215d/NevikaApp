@@ -31,9 +31,14 @@ namespace NevikaApp.Data
                 //dont refill it if it already exists
                 if (conn.GetTableInfo("Allergen").Count > 0)
                 {
-                    //return;
                     //conn.DropTable<Allergen>();
+                    //return;
                 }
+                if (conn.GetTableInfo("FavoritedProduct").Count > 0)
+                {
+                    return;
+                }
+                conn.DropTable<Allergen>();
                 conn.CreateTable<Allergen>();
                 List<Allergen> tempList = new List<Allergen>();
                 tempList.Add(new Allergen()
@@ -89,8 +94,8 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Sennep korn",
-                    IsCategory = true,
+                    DanishName = "Sennepskorn",
+                    IsCategory = false,
                     Category = "Sennep",
                     Selected = false
                 });
@@ -138,7 +143,7 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Fiskesauce",
+                    DanishName = "fiskesauce",
                     IsCategory = false,
                     Category = "Krebsdyr",
                     Selected = false
@@ -152,14 +157,14 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Maelk",
+                    DanishName = "Mælk",
                     IsCategory = false,
                     Category = "Mejeriprodukter",
                     Selected = false
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Smor",
+                    DanishName = "Smør",
                     IsCategory = false,
                     Category = "Mejeriprodukter",
                     Selected = false
@@ -320,14 +325,14 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Hampefrø",
+                    DanishName = "Boghvede",
                     IsCategory = false,
                     Category = "Frø/kerner",
                     Selected = false
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Boghvede",
+                    DanishName = "Hampefrø",
                     IsCategory = false,
                     Category = "Frø/kerner",
                     Selected = false
@@ -787,22 +792,9 @@ namespace NevikaApp.Data
                     Category = "Krydderi",
                     Selected = false
                 });
-                if (conn.GetTableInfo("FavoritedProduct").Count > 0)
-                {
-                    return;
-                }
-                var rowsNumber = conn.InsertAll(tempList);
+                conn.InsertAll(tempList);
             }
         }
-
-        public static void DeleteAllergens()
-        {
-            using (SQLite.SQLiteConnection conn = new SQLite.SQLiteConnection(LOCAL_DB_PATH))
-            {
-                conn.DropTable<Allergen>();
-            }
-        }
-
 
         public static void PopulateAllergenList()
         {
