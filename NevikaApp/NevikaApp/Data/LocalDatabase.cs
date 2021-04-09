@@ -227,7 +227,28 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Muslinger",
+                    DanishName = "Blåmuslinger",
+                    IsCategory = false,
+                    Category = "Skaldyr",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Knivmuslinger",
+                    IsCategory = false,
+                    Category = "Skaldyr",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Kammuslinger",
+                    IsCategory = false,
+                    Category = "Skaldyr",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Hjertemuslinger",
                     IsCategory = false,
                     Category = "Skaldyr",
                     Selected = false
@@ -458,6 +479,20 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
+                    DanishName = "Markchampignon",
+                    IsCategory = false,
+                    Category = "Svampe",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Lille blødchampignon",
+                    IsCategory = false,
+                    Category = "Svampe",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
                     DanishName = "Karl Johan",
                     IsCategory = false,
                     Category = "Svampe",
@@ -500,7 +535,35 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Melon",
+                    DanishName = "Honningmelon",
+                    IsCategory = false,
+                    Category = "Frugt/bær",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Vandmelon",
+                    IsCategory = false,
+                    Category = "Frugt/bær",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Cantaloup",
+                    IsCategory = false,
+                    Category = "Frugt/bær",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Galiamelon",
+                    IsCategory = false,
+                    Category = "Frugt/bær",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Charentais melon",
                     IsCategory = false,
                     Category = "Frugt/bær",
                     Selected = false
@@ -682,21 +745,84 @@ namespace NevikaApp.Data
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Beder",
+                    DanishName = "Rødbede",
                     IsCategory = false,
                     Category = "Grøntsager",
                     Selected = false
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Løg",
+                    DanishName = "Gulbede",
                     IsCategory = false,
                     Category = "Grøntsager",
                     Selected = false
                 });
                 tempList.Add(new Allergen()
                 {
-                    DanishName = "Asparges",
+                    DanishName = "Bolsjebede",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Zittauerløg",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Rødløg",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Hvidløg",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Perleløg",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Skallotteløg",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Bananskallotteløg",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Forårsløg",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Hvid asparges",
+                    IsCategory = false,
+                    Category = "Grøntsager",
+                    Selected = false
+                });
+                tempList.Add(new Allergen()
+                {
+                    DanishName = "Grøn asparges",
                     IsCategory = false,
                     Category = "Grøntsager",
                     Selected = false
